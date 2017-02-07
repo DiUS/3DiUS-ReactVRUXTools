@@ -1,0 +1,20 @@
+{
+  "name": "3DiUS-ReactVR",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiUS/3DiUS-ReactVR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiUS/3DiUS-ReactVR/issues"
+  },
+  "homepage": "https://github.com/DiUS/3DiUS-ReactVR#readme"
+}
