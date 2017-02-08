@@ -12,14 +12,26 @@
     "type": "git",
     "url": "git+https://github.com/DiUS/3DiUS-ReactVR.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "aframe",
+    "react",
+    "vr",
+    "boilerplate",
+    "a-frame",
+    "mozvr",
+    "reactvr",
+    "aframe-react",
+    "webvr"
+  ],
+  "author": "Matthew Butt <mbutt@dius.com.au>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DiUS/3DiUS-ReactVR/issues"
   },
   "homepage": "https://github.com/DiUS/3DiUS-ReactVR#readme",
   "dependencies": {
+    "aframe": "^0.4.1",
+    "aframe-react": "^3.4.1",
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-preset-latest": "^6.22.0",
