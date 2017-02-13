@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import 'aframe';
 import 'aframe-animation-component';
-import 'aframe-text-component';
+import 'aframe-html-shader'
 import 'babel-polyfill';
 import {Entity, Scene} from 'aframe-react';
 import Camera from './Camera';
-import Text from './Text';
 import Sky from './Sky';
-//import VideoPanelGroup from './components/VideoPanelGroup';
 
 export default class VRScene extends Component {
   constructor(props) {
     super(props);
-    this.state = {color: 'red'};
+    this.state = {color: 'red', image: ''};
   }
 
   changeColor() {
@@ -23,42 +21,24 @@ export default class VRScene extends Component {
   }
 
   render () {
+    var skyImg = localStorage.getItem('sky');
+
     return (
-      <Scene>
-      <a-assets>
-      </a-assets>
+          <Scene>
+            <a-assets>
+              <img id="sky" src={skyImg} />
+            </a-assets>
 
-      <Camera>
-      <a-cursor
-      animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150">
-      </a-cursor>
-      </Camera>
+            <Camera>
+              <a-cursor
+                animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150">
+              </a-cursor>
+            </Camera>
 
-      <Sky src="url(https://rawgit.com/aframevr/assets/gh-pages/360-image-gallery-boilerplate/img/sechelt.jpg)"/>
+            <a-cylinder position="1 0.75 1" radius="0.5" height="1.5" color="#FFC65D" rotation="" scale="" visible="" material="" geometry=""></a-cylinder>
+            <a-sky src={skyImg} />
 
-      <Text
-      text='Hello World!'
-      color='#DADADA'
-      position='-1.75 1 -3'/>
-
-      <Entity light={{type: 'ambient', color: '#888'}}/>
-      <Entity light={{type: 'directional', intensity: 0.5}} position='-1 1 0'/>
-      <Entity light={{type: 'directional', intensity: 1}} position='1 1 0'/>
-
-      <Entity
-      animation__rot={{property: 'rotation', dur: 2000, loop: true, to: '360 360 360'}}
-      animation__sca={{property: 'scale', dir: 'alternate', dur: 100, loop: true, to: '1.1 1.1 1.1'}}
-      geometry='primitive: box'
-      material={{color: this.state.color, opacity: 0.6}}
-      position='0 -0.5 -3'
-      onClick={this.changeColor.bind(this)}>
-      <Entity
-      animation__scale={{property: 'scale', dir: 'alternate', dur: 100, loop: true, to: '2 2 2'}}
-      geometry='primitive: box; depth: 0.2; height: 0.2; width: 0.2'
-      material={{color: '#24CAFF'}}/>
-      </Entity>
-      </Scene>
-
+          </Scene>
     );
   }
 }

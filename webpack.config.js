@@ -1,28 +1,23 @@
-const path = require('path');
+var webpack = require('webpack')
 
 module.exports = {
-  context: path.join(__dirname, 'src'),
-  entry: [
-    './app.js',
-  ],
+  entry: './index.js',
+
   output: {
-    path: path.join(__dirname, 'www'),
+    path: 'public',
     filename: 'bundle.js',
+    publicPath: '/'
   },
+
+  plugins: process.env.NODE_ENV === 'production' ? [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin()
+  ] : [],
+
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          'babel-loader',
-        ],
-      },
-    ],
-  },
-  resolve: {
-    modules: [
-      path.join(__dirname, 'node_modules'),
-    ],
-  },
-};
+    loaders: [
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react' }
+    ]
+  }
+}
