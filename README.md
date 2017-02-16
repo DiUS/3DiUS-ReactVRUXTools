@@ -41,3 +41,5 @@ node server.js
 ```
 
 You can run this server locally for testing, but right now you need to build it each time.
+
+I followed the cool tutorial at `https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-1-d67367ac5171#.ktvk348o5` for building a quick node server :)
