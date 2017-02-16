@@ -63,7 +63,7 @@ export default class ImageUpload extends Component {
   render() {
     let {imagePreviewUrl} = this.state;
     let $imagePreview = null;
-    let uploadString = this.state.upoaded ? 'Much success!' : '';
+    let uploadString = this.state.uploaded ? 'Much success!' : '';
  
     if (imagePreviewUrl) {
       $imagePreview = (<img src={imagePreviewUrl} />);
