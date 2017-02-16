@@ -15,11 +15,30 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json({limit: '5mb'}));
 app.use(bodyParser.urlencoded({limit: '5mb', extended: true}));
 
+app.post('/transform', function(req, res) {
+  var transform = req.body.data;
+  saveTransformJson(transform, function(err) {
+    if (err) {
+      res.status(404).send('data bad');
+      return;
+    }
+    res.send('data saved');
+  });
+});
+
+app.get('/transform', function(req, res) {
+  var fs = require('fs');
+  var obj = fs.readFileSync('./public/transform.json', 'utf8');
+  res.send(obj);
+});
+
+function saveTransformJson(data, callback) {
+  fs.writeFile('./public/transform.json', JSON.stringify(data), callback);
+}
+
 app.post('/store', function(req, res) {
 // create an incoming form object
   var form = new formidable.IncomingForm();
-
-  console.log(req.body);
 
   // specify that we want to allow the user to upload multiple files in a single request
   form.multiples = true;
@@ -45,12 +64,6 @@ app.post('/store', function(req, res) {
 
   // parse the incoming request containing the form data
   form.parse(req);
-});
-
-app.get('/store', function(req, res) {
-  var type = req.query.type;
-  var obj = JSON.parse(fs.readFileSync("./tmp/" + type + ".json", 'utf8'));
-  res.send(obj);
 });
 
 // send all requests to index.html so browserHistory works

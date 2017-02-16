@@ -11,12 +11,27 @@
 }
 
 h4 {
-  margin-left: 15px !important;
+  margin: 15px 0 0 15px !important;
 }
 
 p {
-  color: #0f0;
-  height: 25px;
+  color: #0a0;
+  margin-left: 15px !important;
+  height: 20px;
+}
+
+.leftDiv, .rightDiv {
+  float: left;
+  width: 400px;
+}
+
+.rightDiv {
+  padding-top: 200px;
+}
+
+.formColumn {
+  width: 120px;
+  float: left;
 }
 
 .fileInput {
@@ -32,8 +47,8 @@ p {
 .spheremapPreview {
   text-align: center;
   margin: 5px 15px;
-  height: 250px;
-  width: 300px;
+  height: 225px;
+  width: 450px;
   border-left: 1px solid gray;
   border-right: 1px solid gray;
   border-top: 5px solid gray;
@@ -43,8 +58,8 @@ p {
 .menuPreview {
   text-align: center;
   margin: 5px 15px;
-  height: 250px;
-  width: 300px;
+  height: 225px;
+  width: 270px;
   border-left: 1px solid gray;
   border-right: 1px solid gray;
   border-top: 5px solid gray;

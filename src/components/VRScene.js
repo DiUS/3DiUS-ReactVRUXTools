@@ -5,8 +5,10 @@ import 'aframe-html-shader'
 import 'babel-polyfill';
 import {Entity, Scene} from 'aframe-react';
 import Camera from './Camera';
-import Sky from '../components/Sky';
-import Menu from '../components/Menu';
+import SkyAsset from '../components/assets/SkyAsset';
+import SkyImage from '../components/vr/SkyImage';
+import MenuAsset from '../components/assets/MenuAsset';
+import MenuImage from '../components/vr/MenuImage';
 
 export default class VRScene extends Component {
   constructor(props) {
@@ -22,12 +24,12 @@ export default class VRScene extends Component {
           </a-cursor>
         </Camera>
 
-        <Sky/>
-        <a-sky src="#sky" rotation="0 -90 0"/>
+        <SkyAsset/>
+        <MenuAsset/>
 
-        <Menu/>
-        <a-image position="0 0 -2" src="#menu" scale="1.5 1.5 1"></a-image>
-      </Scene>
+        <SkyImage/>
+        <MenuImage/>
+        </Scene>
     );
   }
 }

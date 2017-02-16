@@ -1,37 +1,33 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
+import ImageService from '../../services/ImageService'
 
-export default class ImageUpload extends Component {
+export default class MenuUpload extends Component {
   constructor(props) {
     super(props);
     this.state = {
       file: '',
       fileName: '',
-      imagePreviewUrl: '',
+      imagePreviewUrl: '/images/menu.png',
       uploaded: false
     };
     this._handleSubmit = this._handleSubmit.bind(this);
     this._handleImageChange = this._handleImageChange.bind(this);
-    this.setState = this.setState(this);
+    this._onSavedImage = this._onSavedImage.bind(this);
   }
 
   _handleSubmit(e) {
     e.preventDefault();
 
     let formData = new FormData();
-    formData.append('uploads[]', this.state.file, "spheremap.png");
-    let that = this;
+    formData.append('uploads[]', this.state.file, "menu.png");
 
-    $.ajax({
-      type: 'POST',
-      url: '/store',
-      contentType: false,
-      processData: false,
-      data: formData,
-      success: function(data){
-        that.setState({ uploaded: true });
-      }
-    })
+    ImageService.postImage(formData, this._onSavedImage)
+  }
+
+  _onSavedImage()
+  {
+    this.setState({uploaded: true});
+    setTimeout(() => { this.setState({uploaded: false }); }, 3000);
   }
 
   _handleImageChange(e) {
@@ -64,7 +60,7 @@ export default class ImageUpload extends Component {
     let {imagePreviewUrl} = this.state;
     let $imagePreview = null;
     let uploadString = this.state.uploaded ? 'Much success!' : '';
- 
+
     if (imagePreviewUrl) {
       $imagePreview = (<img src={imagePreviewUrl} />);
     } else {
@@ -73,12 +69,12 @@ export default class ImageUpload extends Component {
 
     return (
       <div className="previewComponent">
-        <h4>Background Image</h4>
+        <h4>Menu Image</h4>
         <form onSubmit={(e)=>this._handleSubmit(e)}>
-          <input className="fileInput" type="file" onChange={(e)=>this._handleImageChange(e)} accept="image/x-png"  />
+          <input className="fileInput" type="file" onChange={(e)=>this._handleImageChange(e)} accept="image/x-png" />
           <button className="submitButton" type="submit" onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
         </form>
-        <div className="spheremapPreview">
+        <div className="menuPreview">
           {$imagePreview}
         </div>
         <p>{uploadString}</p>
