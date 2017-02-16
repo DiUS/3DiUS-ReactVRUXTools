@@ -7,6 +7,6 @@ import VRScene from './src/components/VRScene'
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App} />
-    <Route path="vr-scene" component={VRScene} />
+    <Route path="/vr-scene" component={VRScene} />
   </Router>
 ), document.getElementById('app'))

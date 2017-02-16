@@ -3,6 +3,6 @@ import 'aframe';
 
 export default props => (
     <a-assets>
-      <img id="sky" src="images/spheremap.png" />
+      <img id="menu" src="images/menu.png" />
     </a-assets>
 )
