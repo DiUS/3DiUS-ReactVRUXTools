@@ -34,7 +34,13 @@ Sounds like a plan.
 npm run dist
 ```
 Then zip up the root folder (except for the node_modules directory!)
-I am then scp'ing the zip to the node server, unpacking and then
+
+I am then scp'ing the zip to the node server
+```
+scp -i some-pem-file.pem -r project.zip ubuntu@52.38.183.91:/home/ubuntu/server
+```
+
+Once unpacked on the ec2 instance, I am running it manually for the moment:
 
 ```
 node server.js
