@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ImageService from '../../services/ImageService'
 
 export default class SpheremapUpload extends Component {
   constructor(props) {
