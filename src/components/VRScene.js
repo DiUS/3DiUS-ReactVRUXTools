@@ -5,9 +5,7 @@ import 'aframe-html-shader'
 import 'babel-polyfill';
 import {Entity, Scene} from 'aframe-react';
 import Camera from './Camera';
-import SkyAsset from '../components/assets/SkyAsset';
 import SkyImage from '../components/vr/SkyImage';
-import MenuAsset from '../components/assets/MenuAsset';
 import MenuImage from '../components/vr/MenuImage';
 
 export default class VRScene extends Component {
@@ -23,9 +21,6 @@ export default class VRScene extends Component {
             animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150">
           </a-cursor>
         </Camera>
-
-        <SkyAsset/>
-        <MenuAsset/>
 
         <SkyImage/>
         <MenuImage/>

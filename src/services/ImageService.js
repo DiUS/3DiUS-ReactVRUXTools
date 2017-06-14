@@ -13,7 +13,12 @@ const ImageService = {
         callback();
       }
     })
+  },
+
+  getImage(name, callback) {
+    callback('https://s3-ap-southeast-2.amazonaws.com/3dius-sketch-to-vr/' + name + '.png');
   }
 }
 
 export default ImageService;
+
