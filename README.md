@@ -37,7 +37,8 @@ npm run dist
 Copy the public folder contents to an s3 bucket.
 Host the bucket as a static website and attach the following
 
-### bukcet policy
+### bucket policy's
+```
 {
   "Version": "2012-10-17",
     "Statement": [{
@@ -48,6 +49,7 @@ Host the bucket as a static website and attach the following
       "Resource": "arn:aws:s3:::<bucket name>/*"
     }]
 }
+```
 
 This system is currently set to use the bucket '3dius-sketch-to-vr-frontend' for hosting. It pulls the images from an assumed bucket called '3dius-sketch-to-vr'.
 It will have issues pulling from another bucket due to CORS. I have attached the following cors policy to the bucket '3dius-sketch-to-vr':
