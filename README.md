@@ -49,3 +49,21 @@ Host the bucket as a static website and attach the following
     }]
 }
 
+This system is currently set to use the bucket '3dius-sketch-to-vr-frontend' for hosting. It pulls the images from an assumed bucket called '3dius-sketch-to-vr'.
+It will have issues pulling from another bucket due to CORS. I have attached the following cors policy to the bucket '3dius-sketch-to-vr':
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <CORSRule>
+    <AllowedOrigin>*</AllowedOrigin>
+    <AllowedMethod>HEAD</AllowedMethod>
+    <AllowedMethod>GET</AllowedMethod>
+    <AllowedMethod>PUT</AllowedMethod>
+    <AllowedMethod>POST</AllowedMethod>
+    <AllowedMethod>DELETE</AllowedMethod>
+    <ExposeHeader>ETag</ExposeHeader>
+    <AllowedHeader>*</AllowedHeader>
+  </CORSRule>
+</CORSConfiguration>
+```
