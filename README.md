@@ -33,19 +33,19 @@ Sounds like a plan.
 ```
 npm run dist
 ```
-Then zip up the root folder (except for the node_modules directory!)
 
-I am then scp'ing the zip to the node server
-```
-scp -i some-pem-file.pem -r project.zip ubuntu@52.38.183.91:/home/ubuntu/server
-```
+Copy the public folder contents to an s3 bucket.
+Host the bucket as a static website and attach the following
 
-Once unpacked on the ec2 instance, I am running it manually for the moment:
+### bukcet policy
+{
+  "Version": "2012-10-17",
+    "Statement": [{
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::<bucket name>/*"
+    }]
+}
 
-```
-node server.js
-```
-
-You can run this server locally for testing, but right now you need to build it each time.
-
-I followed the cool tutorial at `https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-1-d67367ac5171#.ktvk348o5` for building a quick node server :)
